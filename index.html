@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suhail Khalifaturahman | Digital Card</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CSS Reset & Style Dasar */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #080c14; /* Hitam - Navy Gelap */
+      color: #e2e8f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background Glow Ambient (Gradasi Navy / Dark Blue Futuristik) */
+    .glow-bg-1 {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(30, 58, 138, 0.4) 0%, rgba(8, 12, 20, 0) 70%);
+      top: 15%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .glow-bg-2 {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(14, 116, 144, 0.25) 0%, rgba(8, 12, 20, 0) 70%);
+      bottom: 10%;
+      left: 50%;
+      transform: translate(-50%, 0);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Container Kartu Profil Utama (Glassmorphism) */
+    .profile-card {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 420px;
+      background: rgba(15, 23, 42, 0.7); /* Transparan Abu-Navy */
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .profile-card:hover {
+      border-color: rgba(56, 189, 248, 0.3);
+      box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+    }
+
+    /* Foto Profil */
+    .avatar-wrapper {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px auto;
+    }
+
+    .avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      padding: 3px;
+      background: linear-gradient(135deg, #1e3a8a, #38bdf8) border-box;
+    }
+
+    /* Nama & Deskripsi */
+    .name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      margin-bottom: 16px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* Container Link/Tombol */
+    .links-container {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .link-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      background: rgba(30, 41, 59, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      color: #f1f5f9;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .link-btn:hover {
+      background: linear-gradient(135deg, #1e3a8a, #0284c7);
+      color: #ffffff;
+      border-color: #38bdf8;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2, 132, 199, 0.3);
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
+      color: #64748b;
+      text-align: center;
+      z-index: 1;
+    }
+
+    /* Responsif untuk Layar HP Kecil */
+    @media (max-width: 380px) {
+      .profile-card {
+        padding: 30px 20px;
+      }
+      .name {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="glow-bg-1"></div>
+  <div class="glow-bg-2"></div>
+
+  <main class="profile-card" id="card">
+    
+    <div class="avatar-wrapper">
+      <img src="profil.png" alt="Foto Suhail Khalifaturahman" class="avatar-img" onerror="this.onerror=null; this.src='profil.jpg';">
+    </div>
+
+    <h1 class="name">Suhail Khalifaturahman</h1>
+    <div class="badge-tag">Web Developer</div>
+    <p class="description">
+      Santri Al Bunyan & Web Developer. Berfokus pada pengembangan web modern dan teknologi digital.
+    </p>
+
+    <div class="links-container">
+      <a href="https://wa.me/62895322729044" target="_blank" class="link-btn" onclick="handleClick('WhatsApp')">
+        <span>WhatsApp (0895322729044)</span>
+      </a>
+      <a href="https://instagram.com/fathuurr0104" target="_blank" class="link-btn" onclick="handleClick('Instagram')">
+        <span>Instagram (@fathuurr0104)</span>
+      </a>
+    </div>
+
+  </main>
+
+  <footer>
+    &copy; 2025 Suhail Khalifaturahman
+  </footer>
+
+  <script>
+    // Fungsi log saat tombol link diklik
+    function handleClick(platform) {
+      console.log(`Pengguna membuka link: ${platform}`);
+    }
+
+    // Efek Interaktif Parallax / 3D Tilt pada Desktop saat mouse digerakkan
+    const card = document.getElementById('card');
+
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => {
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 30;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 30;
+        card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+      });
+
+      // Kembalikan posisi kartu saat mouse meninggalkan jendela layar
+      document.addEventListener('mouseleave', () => {
+        card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      });
+    }
+  </script>
+</body>
+</html>
